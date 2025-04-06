@@ -164,3 +164,7 @@ Cu o baterie de 2500mAh, dispozitivul poate avea o autonomie de cateva saptamani
 | GPIO21        | SD Card MOSI (optional)                  | Iesire date catre cardul SD.                         |
 | GPIO4         | SD Card CLK (optional)                   | Semnal de clock pentru cardul SD (SPI).              |
 
+## Concluzii
+
+Acest proiect a fost un adevarat challenge si a implicat o cantitate considerabila de munca. Au existat momente cand m-am simtit complet depasita, iar uneori chiar enervata de complexitatea sa :)) Cu toate acestea, am reusit sa-l finalizez si sunt destul de multumita de rezultat. 
+Sper ca totul este in regula si ca nu mi-a scapat vreun detaliu prea important. Ca orice proiect de acest tip, a fost o experienta de invatare continua, iar daca voi gasi ceva ce nu am luat in considerare, il voi imbunatati pe parcurs.😅<3
