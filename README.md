@@ -139,3 +139,28 @@ In modul Deep Sleep, consumul total scade sub 50-100µA, iar in utilizare activa
 
 Cu o baterie de 2500mAh, dispozitivul poate avea o autonomie de cateva saptamani in regim normal de utilizare, in care majoritatea timpului este in stare inactiva si doar afiseaza imagini statice.
 
+## 4. Detalierea pinilor ESP32-C6 utilizati pentru fiecare componenta
+
+| Pin ESP32-C6  | Componenta / Semnal                       | Explicatie                                           |
+|---------------|-------------------------------------------|------------------------------------------------------|
+| GPIO1         | I²C SDA (BME688, MAX17048, DS3231, Qwiic) | Se foloseste pentru a partaja magistrala I²C intre toti senzorii si RTC. |
+| GPIO2         | I²C SCL (BME688, MAX17048, DS3231, Qwiic) | Linia de clock pentru comunicarea I²C.              |
+| GPIO5         | SPI MISO (E-Paper)                       | Pinul pentru citirea datelor sau a statusului de la ecranul e-paper. |
+| GPIO6         | SPI MOSI (E-Paper)                       | Trimiterea datelor catre ecranul e-paper.            |
+| GPIO7         | SPI CLK (E-Paper)                        | Semnal de clock pentru sincronizarea cu e-paper.    |
+| GPIO8         | SPI CS (E-Paper)                         | Chip Select pentru a activa comunicarea cu e-paper.  |
+| GPIO9         | E-Paper DC (Data/Command)                | Semnal pentru a diferentia intre date si comenzi pentru ecranul e-paper. |
+| GPIO10        | E-Paper RST                              | Pinul de reset hardware pentru e-paper.              |
+| GPIO11        | E-Paper BUSY                             | Intrare din display care indica daca ecranul este ocupat sau nu. |
+| GPIO12        | Button #1                                | Intrare digitala pentru primul buton (ex. pagina urmatoare). |
+| GPIO13        | Button #2                                | Intrare digitala pentru al doilea buton (ex. pagina anterioara). |
+| GPIO14        | Button #3                                | Intrare digitala pentru al treilea buton (ex. Meniu/OK). |
+| GPIO15        | MAX17048 ALERT (optional)                | Semnal de alerta de la MAX17048 pentru nivel scazut al bateriei. |
+| GPIO16        | USB D+ (intern la USB PHY)               | Pin dedicat pentru semnalul USB 2.0 (D+).            |
+| GPIO17        | USB D- (intern la USB PHY)               | Pin dedicat pentru semnalul USB 2.0 (D-).            |
+| GPIO18        | LED de status (optional)                 | Indicator pentru diverse stari (ex. Wi-Fi, incarcare, etc.). |
+| GPIO19        | SD Card CS (optional)                    | Chip Select pentru cardul SD (daca se foloseste SPI). |
+| GPIO20        | SD Card MISO (optional)                  | Intrare date de la cardul SD.                        |
+| GPIO21        | SD Card MOSI (optional)                  | Iesire date catre cardul SD.                         |
+| GPIO4         | SD Card CLK (optional)                   | Semnal de clock pentru cardul SD (SPI).              |
+
