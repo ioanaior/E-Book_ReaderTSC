@@ -87,7 +87,7 @@ Aici sunt listate componentele, impreuna cu linkurile pentru a verifica preturil
 | Q3                 | D8                                        | [Check Price](https://componentsearchengine.com/part-view/PGB1010603MR/Littelfuse) | [DataSheet](https://componentsearchengine.com/part-view/PGB1010603MR/Littelfuse) |
 | Q4                 | Q2_TS-B2_REACHPACK                        | #N/A                                                                         | #N/A                                                                      |
 
-## 3. Detalii despre functionalitatea hardware
+Detalii despre functionalitatea hardware
 
 ### Microcontroller – ESP32-C3-WROOM
 Microcontroller-ul utilizat este ESP32-C3-WROOM, un procesor 32-bit RISC-V, care ruleaza la frecvente de pana la 160MHz. Acesta dispune de 512KB de SRAM intern si 8MB de flash extern, suficiente pentru a sustine aplicatii complexe. ESP32-C3-WROOM beneficiaza de conectivitate Wi-Fi 6 si Bluetooth 5, facilitand conexiuni rapide si stabile. Printre perifericele sale se numara SPI, I²C, UART si GPIO multiple, iar pentru economisirea energiei, dispune de moduri de tip sleep si deep sleep.
@@ -139,7 +139,7 @@ In modul Deep Sleep, consumul total scade sub 50-100µA, iar in utilizare activa
 
 Cu o baterie de 2500mAh, dispozitivul poate avea o autonomie de cateva saptamani in regim normal de utilizare, in care majoritatea timpului este in stare inactiva si doar afiseaza imagini statice.
 
-## 4. Detalierea pinilor ESP32-C6 utilizati pentru fiecare componenta
+## Detalierea pinilor ESP32-C6 utilizati pentru fiecare componenta
 
 | Pin ESP32-C6  | Componenta / Semnal                       | Explicatie                                           |
 |---------------|-------------------------------------------|------------------------------------------------------|
