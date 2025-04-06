@@ -1,6 +1,6 @@
 # E-Book_ReaderTSC
 
-Schema bloc:
+## 📘 Schema bloc
 
 ```mermaid
 flowchart TB
@@ -22,4 +22,3 @@ flowchart TB
   ESP32 -- GPIO --> Buttons["Buttons (3x)"]
   ESP32 -- I2C --> TempSensor["Temp/RH Sensor (BME680)"]
   ESP32 -- USB --> USB-C
-end
