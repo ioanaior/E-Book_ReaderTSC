@@ -2,6 +2,7 @@
 
 Schema bloc:
 
+```mermaid
 flowchart TB
   subgraph Power
     USB[USB-C Input] -->|5V| Charger["Li-Ion Charger (MCP73831)"]
@@ -27,4 +28,3 @@ flowchart TB
     MCU -- I2C --> Gauge
     MCU -- I2C --> RTC
   end
-
