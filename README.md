@@ -4,27 +4,22 @@ Schema bloc:
 
 ```mermaid
 flowchart TB
-  subgraph Power
-    USB[USB-C Input] -->|5V| Charger["Li-Ion Charger (MCP73831)"]
-    Charger -->|Charging| Battery["LiPo Cell (2500mAh)"]
-    Battery --> LDO["LDO Regulator (3.3V)"]
-  end
+  USB-C -->|5V| Charger["Battery Charger (MCP73832)"]
+  Charger -->|Charging| LiPo["LiPo Battery"]
+  LiPo --> LDO["3V3 LDO"]
+  LiPo --> DC5["5V DC/DC"]
 
-  subgraph Core
-    LDO -->|3.3V| MCU["ESP32-C6-WROOM-1"]
-    MCU -- USB --> USB
-  end
+  ESP32["ESP32-C3-WROOM"]
 
-  subgraph Peripherals
-    LDO --> Display["E-Ink Display (7.5in)"]
-    LDO --> SD["SD Card Slot"]
-    LDO --> RTC["RTC (DS3231)"]
-    LDO --> Sensor["Enviro Sensor (BME688)"]
-    LDO --> Gauge["Fuel Gauge (MAX17048)"]
-    MCU -- SPI --> Display
-    MCU -- SPI --> SD
-    MCU -- GPIO --> Btns["Buttons (x3)"]
-    MCU -- I2C --> Sensor
-    MCU -- I2C --> Gauge
-    MCU -- I2C --> RTC
-  end
+  LDO -->|3.3V| ESP32
+  LDO -->|3.3V| Display
+  LDO -->|3.3V| SDCard
+  LDO -->|3.3V| TempSensor
+  LDO -->|3.3V| Buttons
+
+  ESP32 -- SPI --> Display["1.5'' E-Ink Display (200x200px)"]
+  ESP32 -- SPI --> SDCard["SD Card"]
+  ESP32 -- GPIO --> Buttons["Buttons (3x)"]
+  ESP32 -- I2C --> TempSensor["Temp/RH Sensor (BME680)"]
+  ESP32 -- USB --> USB-C
+end
