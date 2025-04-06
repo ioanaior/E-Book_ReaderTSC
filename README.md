@@ -27,6 +27,7 @@ flowchart TB
 # List of Components
 
 Aici sunt listate componentele, impreuna cu linkurile pentru a verifica preturile si fisele tehnice. Unele componente nu au un model specificat, si în acele cazuri, fisele tehnice si linkurile catre preturi sunt marcate ca `#N/A`.
++ also SJ-ul si TP-urile sunt modelate de mine, deci nu am importat model 3D.
 
 | Name of component  | Device                                    | Check Prices                                                                 | DataSheet                                                                  |
 |--------------------|-------------------------------------------|-----------------------------------------------------------------------------|----------------------------------------------------------------------------|
@@ -85,4 +86,56 @@ Aici sunt listate componentele, impreuna cu linkurile pentru a verifica preturil
 | Q2                 | ESP32_WROVER_SPARKFUN-DISCRETESEMI_MOSFET_... | #N/A                                                                         | #N/A                                                                      |
 | Q3                 | D8                                        | [Check Price](https://componentsearchengine.com/part-view/PGB1010603MR/Littelfuse) | [DataSheet](https://componentsearchengine.com/part-view/PGB1010603MR/Littelfuse) |
 | Q4                 | Q2_TS-B2_REACHPACK                        | #N/A                                                                         | #N/A                                                                      |
+
+## 3. Detalii despre functionalitatea hardware
+
+### Microcontroller – ESP32-C3-WROOM
+Microcontroller-ul utilizat este ESP32-C3-WROOM, un procesor 32-bit RISC-V, care ruleaza la frecvente de pana la 160MHz. Acesta dispune de 512KB de SRAM intern si 8MB de flash extern, suficiente pentru a sustine aplicatii complexe. ESP32-C3-WROOM beneficiaza de conectivitate Wi-Fi 6 si Bluetooth 5, facilitand conexiuni rapide si stabile. Printre perifericele sale se numara SPI, I²C, UART si GPIO multiple, iar pentru economisirea energiei, dispune de moduri de tip sleep si deep sleep.
+
+### Ecran E-Paper (1.5 inch)
+Ecranul e-paper utilizat are o rezolutie de 200x200px si comunica cu ESP32 prin interfata SPI cu 4 pini (CS, DC, RST, BUSY). Desi consumul de energie este foarte redus in timpul afisarii statice, la fiecare refresh al imaginii ecranul necesita aproximativ 15–25mA, in functie de modul de actualizare ales. Acest tip de afisaj este ideal pentru aplicatiile de tip e-reader, datorita consumului minim de energie in mod static.
+
+### Senzor de mediu – BME680
+Senzorul BME680 masoara temperatura, umiditatea, presiunea si calitatea aerului (VOC/eCO2). Acesta comunica cu microcontroller-ul prin I²C la 400kHz, iar consumul in modul standby este de doar 2.1µA, crescand pana la cativa mA in timpul masurarilor. BME680 este o alegere excelenta datorita capacitatii sale de a integra multiple tipuri de masuratori intr-un singur cip, oferind date importante pentru monitorizarea mediului.
+
+### Gestionarea energiei – Baterie Li-Po si IC de incarcare
+Dispozitivul este alimentat de o baterie Li-Po de 2500mAh, care ofera o autonomie extinsa. IC-ul de incarcare MCP73832, compatibil cu incarcarea prin USB-C, permite incarcarea bateriei cu un curent de pana la 1A. Monitorizarea nivelului bateriei se face prin intermediul unui fuel gauge MAX17048, care transmite informatii despre tensiune si stare prin I²C. Pentru a asigura o tensiune stabila de 3.3V, se foloseste un regulator LDO XC6220A331MR-G, care alimenteaza microcontroller-ul si celelalte componente.
+
+### Butoane tactile pentru interactiune
+Dispozitivul dispune de trei butoane tactile pentru navigarea prin meniu, selectarea optiunilor si schimbarea paginilor. Fiecare buton este conectat la un GPIO al microcontroller-ului printr-un circuit de debouncing, care asigura o interactiune fiabila. Debouncing-ul poate fi implementat fie hardware, printr-o combinatie de rezistor si condensator, fie in firmware.
+
+### Port USB-C
+Portul USB-C permite atat incarcarea bateriei, cat si transferul de date. Acesta poate fi utilizat si pentru actualizari de firmware prin bootloader sau OTA prin Wi-Fi. Protectiile incluse (ESD si rezistente de terminare) asigura o protectie suplimentara impotriva eventualelor probleme de conectivitate.
+
+### Conector Qwiic (I²C)
+Conectorul Qwiic standardizat, cu patru pini (VCC, GND, SDA, SCL), faciliteaza integrarea rapida a modulelor I²C externe. Acesta este ideal pentru extinderea dispozitivului cu senzori suplimentari sau pentru prototipuri rapide.
+
+### Card SD pentru stocare externa
+Dispozitivul include un conector pentru card SD, permitand stocarea de e-book-uri, loguri sau fisiere pentru actualizari de firmware. Interfata poate fi configurata in modul SD (1-bit/4-bit) sau SPI, in functie de necesitatile firmware-ului.
+
+### RTC DS3231
+RTC-ul DS3231 asigura un ceas de timp real precis si mentine timpul chiar si atunci cand dispozitivul nu este alimentat, datorita unei baterii secundare sau supercondensatorului de backup. Comunicarea cu microcontroller-ul se face prin I²C.
+
+### Memorie externa Flash (W25Q512JVEIQ)
+Memoria flash externa W25Q512JVEIQ, conectata prin SPI dedicat (quad SPI), este utilizata pentru stocarea firmware-ului si a fisierelor mari (e-book-uri, etc.). Acesta permite o incarcare rapida a datelor si o capacitate mare de stocare.
+
+### Comunicare si interfete
+Dispozitivul utilizeaza diverse interfete pentru a comunica cu componentele sale:
+
+- **SPI**: Ecranul e-paper si memoria flash externa utilizeaza SPI pentru comunicare.
+- **I²C**: Senzorul BME680, fuel gauge MAX17048, RTC DS3231 si conectorul Qwiic sunt conectate prin I²C.
+- **USB-C**: Transfer de date si alimentare.
+- **GPIO**: Butoane tactile si semnale de control pentru display.
+
+### Estimarea consumului de energie
+- **ESP32-C3-WROOM** (activ): ~80mA (Wi-Fi activ) / < 10mA (idle)
+- **E-Paper (refresh)**: ~15–25mA (doar in timpul refresh-ului)
+- **BME680** (activ): ~3.6mA (peak) / 2.1µA (sleep)
+- **MAX17048 (fuel gauge)**: ~50µA
+- **DS3231 (RTC)**: ~3.5mA (activ) / <1µA (back-up)
+- **MCP73832 (charger)**: Depinde de curentul de incarcare
+
+In modul Deep Sleep, consumul total scade sub 50-100µA, iar in utilizare activa cu Wi-Fi si actualizari frecvente ale ecranului, consumul poate ajunge la 100-150mA.
+
+Cu o baterie de 2500mAh, dispozitivul poate avea o autonomie de cateva saptamani in regim normal de utilizare, in care majoritatea timpului este in stare inactiva si doar afiseaza imagini statice.
 
