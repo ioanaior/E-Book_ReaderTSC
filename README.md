@@ -37,7 +37,7 @@ Aici sunt listate componentele, impreuna cu linkurile pentru a verifica preturil
 | C1_BAT1            | EAGLE-LTSPICE_CC0402                      | #N/A                                                                         | #N/A                                                                      |
 | C1_BAT2            | EAGLE-LTSPICE_CC0402                      | #N/A                                                                         | #N/A                                                                      |
 | C2                 | ESP32_WROVER_EAGLE-LTSPICE_CC0402         | #N/A                                                                         | #N/A                                                                      |
-| C2_BAT\            | ESP32_WROVER_EAGLE-LTSPICE_CC0402         | #N/A                                                                         | #N/A                                                                      |
+| C2_BAT            | ESP32_WROVER_EAGLE-LTSPICE_CC0402         | #N/A                                                                         | #N/A                                                                      |
 | C3                 | RCL_CPOL-EUCT3528                         | #N/A                                                                         | #N/A                                                                      |
 | C4                 | ESP32_WROVER_EAGLE-LTSPICE_CC0402         | #N/A                                                                         | #N/A                                                                      |
 | C4_USB             | ESP32_WROVER_EAGLE-LTSPICE_CC0402         | #N/A                                                                         | #N/A                                                                      |
@@ -77,7 +77,7 @@ Aici sunt listate componentele, impreuna cu linkurile pentru a verifica preturil
 | IC1                | BD5229G-TR                                | [Check Price](https://componentsearchengine.com/part-view/BD5229G-TR/ROHM%20Semiconductor) | [DataSheet](https://componentsearchengine.com/part-view/BD5229G-TR/ROHM%20Semiconductor) |
 | IC4                | XC6220A331MR-G                            | [Check Price](https://componentsearchengine.com/part-view/XC6220A331MR-G/Torex) | [DataSheet](https://componentsearchengine.com/part-view/XC6220A331MR-G/Torex) |
 | J1                 | FH34SRJ-24S-0.5SH_99_                     | [Check Price](https://componentsearchengine.com/part-view/XC6220A331MR-G/Torex) | [DataSheet](https://componentsearchengine.com/part-view/XC6220A331MR-G/Torex) |
-| J2                 | SAMACSYS_PARTS_USB4110-GF-A               | [Check Price](https://componentsearchengine.com/part-view/USB4110-GF-A/GCT%20(GLOBAL%20CONNECTOR%20TECHNOLOGY) | [DataSheet](https://componentsearchengine.com/part-view/USB4110-GF-A/GCT%20(GLOBAL%20CONNECTOR%20TECHNOLOGY) |
+| J2                 | SAMACSYS_PARTS_USB4110-GF-A               | [Check Price](https://componentsearchengine.com/part-view/USB4110-GF-A/GCT%20(GLOBAL%20CONNECTOR%20TECHNOLOGY)) | [DataSheet](https://componentsearchengine.com/part-view/USB4110-GF-A/GCT%20(GLOBAL%20CONNECTOR%20TECHNOLOGY)) |
 | J3                 | QWIIC_CONNECTORJS-1MM                     | #N/A                                                                         | #N/A                                                                      |
 | J4                 | 112A-TAAR-R03_ATTEND                      | [Check Price](https://store.comet.srl.ro/Catalogue/Product/43497/)           | [DataSheet](https://store.comet.srl.ro/Catalogue/Product/43497/)          |
 | L1                 | 744043680IND_4828-WE-TPC_WRE              | [Check Price](https://eu.mouser.com/ProductDetail/Wurth-Elektronik/744043680?qs=PGXP4M47uW6VkZq%252BkzjrHA%3D%3D) | [DataSheet](https://eu.mouser.com/ProductDetail/Wurth-Elektronik/744043680?qs=PGXP4M47uW6VkZq%252BkzjrHA%3D%3D) |
@@ -87,7 +87,7 @@ Aici sunt listate componentele, impreuna cu linkurile pentru a verifica preturil
 | Q3                 | D8                                        | [Check Price](https://componentsearchengine.com/part-view/PGB1010603MR/Littelfuse) | [DataSheet](https://componentsearchengine.com/part-view/PGB1010603MR/Littelfuse) |
 | Q4                 | Q2_TS-B2_REACHPACK                        | #N/A                                                                         | #N/A                                                                      |
 
-## 3. Detalii despre functionalitatea hardware
+Detalii despre functionalitatea hardware
 
 ### Microcontroller – ESP32-C3-WROOM
 Microcontroller-ul utilizat este ESP32-C3-WROOM, un procesor 32-bit RISC-V, care ruleaza la frecvente de pana la 160MHz. Acesta dispune de 512KB de SRAM intern si 8MB de flash extern, suficiente pentru a sustine aplicatii complexe. ESP32-C3-WROOM beneficiaza de conectivitate Wi-Fi 6 si Bluetooth 5, facilitand conexiuni rapide si stabile. Printre perifericele sale se numara SPI, I²C, UART si GPIO multiple, iar pentru economisirea energiei, dispune de moduri de tip sleep si deep sleep.
@@ -139,7 +139,7 @@ In modul Deep Sleep, consumul total scade sub 50-100µA, iar in utilizare activa
 
 Cu o baterie de 2500mAh, dispozitivul poate avea o autonomie de cateva saptamani in regim normal de utilizare, in care majoritatea timpului este in stare inactiva si doar afiseaza imagini statice.
 
-## 4. Detalierea pinilor ESP32-C6 utilizati pentru fiecare componenta
+## Detalierea pinilor ESP32-C6 utilizati pentru fiecare componenta
 
 | Pin ESP32-C6  | Componenta / Semnal                       | Explicatie                                           |
 |---------------|-------------------------------------------|------------------------------------------------------|
